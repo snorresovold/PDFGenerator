@@ -1,0 +1,194 @@
+[
+  {
+    "Beskrivelse": "Lys, ventilasjon og temp",
+    "Utført": true,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Maskinrom/apparatskap"
+  },
+  {
+    "Beskrivelse": "Evakuering",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Maskinrom/apparatskap"
+  },
+  {
+    "Beskrivelse": "Kontroll av planhet vegg/dør",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Sjakt"
+  },
+  {
+    "Beskrivelse": "Rengjøring av grop og tak",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Sjakt"
+  },
+  {
+    "Beskrivelse": "Kontroll av kjedeoppheng/kjettingfester",
+    "Utført": true,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Plattform"
+  },
+  {
+    "Beskrivelse": "Kontroll av fangapparat/regulator",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Plattform"
+  },
+  {
+    "Beskrivelse": "Kontroll av servicebom plattformtak",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Plattform"
+  },
+  {
+    "Beskrivelse": "Kontroll av nødåpning funksjon i alle etg.",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Dører"
+  },
+  {
+    "Beskrivelse": "Kontroll funksjonstest alle utvendige betjenings knapper",
+    "Utført": true,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Elektrisk"
+  },
+  {
+    "Beskrivelse": "Kontroll funksjonstest alarmtelefon",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Elektrisk"
+  },
+  {
+    "Beskrivelse": "Kontroll funksjonstest lys og nødlys",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Elektrisk"
+  },
+  {
+    "Beskrivelse": "Test alle sikringer, se at dei har rett karakteristikk, etter stram alle koplinger",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Maskinrom/apparatskap"
+  },
+  {
+    "Beskrivelse": "Kontroll av seksjonsskjøter og skruer",
+    "Utført": true,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Sjakt"
+  },
+  {
+    "Beskrivelse": "Kontroll av rust og vannskader",
+    "Utført": true,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Sjakt"
+  },
+  {
+    "Beskrivelse": "Kontroll av nødsenkfunksjon",
+    "Utført": true,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Sjakt"
+  },
+  {
+    "Beskrivelse": "Kontroller servicebom sjaktbunn",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Sjakt"
+  },
+  {
+    "Beskrivelse": "Kontroll av skrue- og sveiseforbindelser",
+    "Utført": true,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Plattform"
+  },
+  {
+    "Beskrivelse": "Kontroll av alle klemlister",
+    "Utført": true,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Plattform"
+  },
+  {
+    "Beskrivelse": "Kontroll av stoppnøyaktighet",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Plattform"
+  },
+  {
+    "Beskrivelse": "Kontroll av apparatskap lås",
+    "Utført": true,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Maskinrom/apparatskap"
+  },
+  {
+    "Beskrivelse": "Rengjøring",
+    "Utført": true,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Maskinrom/apparatskap"
+  },
+  {
+    "Beskrivelse": "Merking av Komponenter",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Maskinrom/apparatskap"
+  },
+  {
+    "Beskrivelse": "Dokumentasjon i skap - Evakueringsinstruks",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Maskinrom/apparatskap"
+  },
+  {
+    "Beskrivelse": "Kontroll avstand plattform/sjakt",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Plattform"
+  },
+  {
+    "Beskrivelse": "Rengjøring tak plattform",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Plattform"
+  },
+  {
+    "Beskrivelse": "Kontroll av åpninger, juster dørblad.",
+    "Utført": true,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Dører"
+  },
+  {
+    "Beskrivelse": "Kontroll av lås og låsbryter, min 7mm inngrep, selvlukking.",
+    "Utført": true,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Dører"
+  },
+  {
+    "Beskrivelse": "Ved slagdører, sjekk hengsler, klaring, selvlukking og glass.",
+    "Utført": true,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Dører"
+  },
+  {
+    "Beskrivelse": "Kontroll av elskap og lås",
+    "Utført": true,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Elektrisk"
+  },
+  {
+    "Beskrivelse": "Kontroll funksjonstest Slakketausbryter",
+    "Utført": true,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Elektrisk"
+  },
+  {
+    "Beskrivelse": "Kontroll funksjonstest sikkerhetsbryter",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Elektrisk"
+  },
+  {
+    "Beskrivelse": "Kontroll av flatkabel",
+    "Utført": false,
+    "Kommentar": "Kan inneholde data eller ikke",
+    "Kategori": "Elektrisk"
+  }
+]
