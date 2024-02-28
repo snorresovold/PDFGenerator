@@ -9,15 +9,6 @@ function runCommand() {
       () => exec('npm i'),
       () => exec('npm run dev')
     ]); 
-    
-    exec(`cd web && npm i && npm run dev`, (error, stdout, stderr) => {
-        if (error) {
-          console.error(`Error executing the script: ${error}`);
-          return;
-        }
-        console.log(`Script output: ${stdout}`);
-        console.error(`Script errors: ${stderr}`);
-      });
 };
 export async function PDFGenerator(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
     context.log(`Http function processed request for url "${request.url}"`);
