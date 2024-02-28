@@ -1,7 +1,14 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
 import { exec, spawn } from "child_process";
+import { series } from 'async';
 
 function runCommand() {
+    series([
+      () => exec('cd web'),
+      () => exec('npm i'),
+      () => exec('npm run dev')
+    ]); 
+    
     exec(`cd web && npm i && npm run dev`, (error, stdout, stderr) => {
         if (error) {
           console.error(`Error executing the script: ${error}`);
