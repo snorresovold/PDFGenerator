@@ -1,0 +1,44 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-print-color-adjust: exact;
+}
+table {
+    border-collapse: collapse;
+    width: 40%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #013763; /* Light gray background for header */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Alternate row color */
+}
+.dataContainer {
+    background: #e6eaee;
+    width: 20%;
+}
+.headerText {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background: #013763;
+    color: white;
+}
+.commentSection {
+    height: 100px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+.commentContainer {
+    width: 20%;
+}
