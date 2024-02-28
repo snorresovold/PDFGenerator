@@ -6,10 +6,10 @@ function runCommand() {
     series([
       () => exec('cd web'),
       () => exec('cd html-generator'),
-      () => exec('npm i'),
-      () => exec('npm run dev')
-    ]); 
+      () => spawn("npm run dev"),
+    ]);
 };
+
 export async function PDFGenerator(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
     context.log(`Http function processed request for url "${request.url}"`);
     const name = request.query.get('name') || await request.text() || 'world';

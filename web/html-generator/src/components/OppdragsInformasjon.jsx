@@ -1,9 +1,4 @@
-interface AssignmentInformation {
-  ordrenummer: string;
-  tksMontor: string;
-}
-
-function OppdragsInformasjon(props: AssignmentInformation) {
+function OppdragsInformasjon(props) {
   return (
     <div className="dataContainer">
       <p className="headerText">Oppdragsinformasjon</p>

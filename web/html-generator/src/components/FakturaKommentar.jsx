@@ -1,8 +1,4 @@
-interface KommentarProps {
-  kommentar: string;
-}
-
-function FakturaKommentar(props: KommentarProps) {
+function FakturaKommentar(props) {
   return (
     <div className="commentContainer">
       <p className="headerText">Fakturakommentar</p>

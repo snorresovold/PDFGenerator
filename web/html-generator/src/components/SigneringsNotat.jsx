@@ -1,8 +1,4 @@
-interface KommentarProps {
-  kommentar: string;
-}
-
-function SigneringsNotat(props: KommentarProps) {
+function SigneringsNotat(props) {
   return (
     <div className="commentContainer">
         <p className="headerText">Notat til signering</p>

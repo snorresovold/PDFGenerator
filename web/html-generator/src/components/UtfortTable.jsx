@@ -1,15 +1,4 @@
-interface Task {
-  Beskrivelse: string;
-  Utført: boolean;
-  Kommentar: string;
-  Kategori: string;
-}
-
-interface TaskTableProps {
-  tasks: Task[];
-}
-
-function UtfortTable({ tasks }: TaskTableProps) {
+function UtfortTable(tasks) {
   return (
     <div>
       <table>

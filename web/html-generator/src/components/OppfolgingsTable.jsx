@@ -1,14 +1,4 @@
-interface FollowUp {
-    oppfølging: string;
-    jaNei: string;
-    kommentar: string;
-}
-
-interface FollowUpTable {
-  followUps: FollowUp[];
-}
-
-function OppfolgingsTable(props: FollowUpTable) {
+function OppfolgingsTable(props) {
   return (
     <div>
       <table>
@@ -37,5 +27,5 @@ function OppfolgingsTable(props: FollowUpTable) {
     </div>
   );
 }
-  
+
 export default OppfolgingsTable

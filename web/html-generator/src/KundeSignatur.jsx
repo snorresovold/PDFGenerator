@@ -1,11 +1,4 @@
-interface KundeSignatur {
-  navn: string,
-  dato: string,
-  signatur: string,
-  notat: string
-}
-
-function KundeSignatur(props: KundeSignatur) {
+function KundeSignatur(props) {
   return (
     <div className="dataContainer">
         <p className="headerText">Signatur Kunde</p>

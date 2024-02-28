@@ -1,10 +1,4 @@
-interface TKSSignatureProps {
-  navn: string;
-  dato: string;
-  signatur: string;
-}
-
-function TKSSignatur(props: TKSSignatureProps) {
+function TKSSignatur(props) {
   return (
     <div className="dataContainer">
       <p className="headerText">Signatur TKS Heis</p>

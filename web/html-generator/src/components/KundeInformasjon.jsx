@@ -1,19 +1,4 @@
-interface KundeInformasjon {
-    kundenummer: number;
-    kundenavn: string;
-    adresse: string;
-    postnummer: string;
-    sted: string;
-    telefon: number;
-    epost: string;
-    kontaktperson: string;
-    kontaktpersonTelefon: string;
-    kontaktpersonEpost: string;
-    bestillingsnummer: number;
-    kundeRef: string;
-}
-
-function KundeInformasjon(kundeinfo: KundeInformasjon) {
+function KundeInformasjon(kundeinfo) {
   return (
       <div className="dataContainer">
         <p className="headerText">Kundeinformasjon</p>

@@ -1,16 +1,4 @@
-interface AnleggsInformasjon {
-    heisnummer: string;
-    beskrivelse: string;
-    adresse: string;
-    postnummer: string;
-    sted: string;
-    modell: string;
-    nyttelast: string;
-    antallStopp: number;
-    løftehøyde: string;
-}
-  
-function AnleggsInformasjon(props: AnleggsInformasjon) {
+function AnleggsInformasjon(props) {
   return (
     <div className="dataContainer">
       <p className="headerText">Anleggsinformasjon</p>
