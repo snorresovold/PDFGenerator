@@ -2,7 +2,7 @@ import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/fu
 import { exec, spawn } from "child_process";
 
 function runCommand() {
-    exec(`cd web && npm i && npm run dev`, (error, stdout, stderr) => {
+    exec(`cd web && npm i && npm run dev --jsx`, (error, stdout, stderr) => {
         if (error) {
           console.error(`Error executing the script: ${error}`);
           return;
