@@ -3,7 +3,7 @@ import { exec, spawn } from "child_process";
 import { series } from 'async';
 
 function runCommand(){
-    const childProcess = spawn('npm', ['run', 'dev'], { cwd: 'src/html-generator' });
+    const childProcess = spawn('npm', ['run', 'preview'], { cwd: 'src/html-generator' });
 
     childProcess.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
