@@ -2,6 +2,7 @@ import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/fu
 import { exec, spawn } from "child_process";
 import { series } from 'async';
 import * as fs from 'fs';
+import path = require("node:path");
 
 function runCommand(){
     const childProcess = spawn('npm', ['run', 'preview'], { cwd: 'src/html-generator' });
@@ -29,15 +30,19 @@ function runCommand(){
         console.log(`stdout: ${stdout}`);
         console.error(`stderr: ${stderr}`);
       });
-    childProcess.kill;
-    return childProcess;
+    childProcess.kill();
 }
 
 export async function PDFGenerator(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
     context.log(`Http function processed request for url "${request.url}"`);
-    const name = request.query.get('name') || await request.text() || 'world';
-    const child = runCommand();
-    child.kill;
+    fs.readdir(path.join(process.cwd(), './src/PDFGenerator'), (err, files) => {
+        if (err) {
+            console.error('Error reading directory:', err);
+            return;
+        }
+    const output = "./src/PDFGenerator/output.pdf"
+    console.log(files);
+    });
     try {
         const outputPath = '/Users/snorresovold/Documents/GitHub/PDFGenerator/src/PDFGenerator/ouput.pdf';
         const body: any = await request.json();
