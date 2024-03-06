@@ -3,11 +3,11 @@ import { exec, spawn } from "child_process";
 import * as fs from 'fs';
 
 function handleInput(input: string) {
-    fs.writeFile("./src/html-generator/output.pdf", input, (err) => {
+    fs.writeFile("./src/html-generator/src/data/data.json", input, (err) => {
         if (err) {
             console.error('Error writing JSON to file:', err);
         } else {
-            console.log('JSON data has been written to', "./src/html-generator/output.pdf");
+            console.log('JSON data has been written to', "./src/html-generator/src/data");
         }
     });
 }
