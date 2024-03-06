@@ -3,9 +3,9 @@ import { exec, spawn } from "child_process";
 import * as fs from 'fs';
 import path = require("node:path");
 
-function runCommand(){
+
+function getPDF(){
     const childProcess = spawn('npm', ['run', 'preview'], { cwd: 'src/html-generator' });
-    
     childProcess.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
     });
@@ -21,7 +21,8 @@ function runCommand(){
     childProcess.on('close', (code) => {
         console.log(`child process exited with code ${code}`);
     });
-    exec('cd src/PDFGenerator && node dist/main.js', (error, stdout, stderr) => {
+
+    exec('cd ./src/PDFGenerator && node dist/main.js', (error, stdout, stderr) => {
         if (error) {
           console.error(`exec error: ${error}`);
           return;
@@ -29,15 +30,7 @@ function runCommand(){
         console.log(`stdout: ${stdout}`);
         console.error(`stderr: ${stderr}`);
       });
-    childProcess.kill();
-
-    const PDF = fs.readFile("./src/PDFGenerator/output.pdf", (err, data) => {
-        if (err) {
-            console.error("Error reading the file:", err);
-            return;
-        }
-        console.log(data);
-    });
+    const PDF = fs.readFileSync("./src/PDFGenerator/output.pdf")
     return PDF
 }
 
@@ -52,11 +45,11 @@ export async function PDFGenerator(request: HttpRequest, context: InvocationCont
     } catch (err) {
         console.error('Error reading directory:', err);
     }
-    const outputPath = './src/PDFGenerator/output.pdf';
+    const pdf = getPDF();
     try {
-        const pdfBuffer = fs.readFileSync(outputPath);
+        // const pdf = fs.readFileSync(outputPath);
         return {
-            body: pdfBuffer,
+            body: pdf,
             status: 200,
             headers: {
                 'Content-Type': 'application/pdf',
