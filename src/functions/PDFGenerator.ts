@@ -1,14 +1,19 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
 import { exec, spawn } from "child_process";
 import * as fs from 'fs';
-import path = require("node:path");
 
 function handleInput(input: string) {
-    console.log(input);
+    fs.writeFile("./src/html-generator/output.pdf", input, (err) => {
+        if (err) {
+            console.error('Error writing JSON to file:', err);
+        } else {
+            console.log('JSON data has been written to', "./src/html-generator/output.pdf");
+        }
+    });
 }
 
 function getPDF(){
-    const childProcess = spawn('npm', ['run', 'preview'], { cwd: 'src/html-generator' });
+    const childProcess = spawn('npm', ['run', 'dev'], { cwd: 'src/html-generator' });
     childProcess.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
     });
