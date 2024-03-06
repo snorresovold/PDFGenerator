@@ -3,6 +3,9 @@ import { exec, spawn } from "child_process";
 import * as fs from 'fs';
 import path = require("node:path");
 
+function handleInput(input: string) {
+    console.log(input);
+}
 
 function getPDF(){
     const childProcess = spawn('npm', ['run', 'preview'], { cwd: 'src/html-generator' });
@@ -36,18 +39,10 @@ function getPDF(){
 
 export async function PDFGenerator(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
     context.log(`Http function processed request for url "${request.url}"`);
-
     const data = request.query.get('data') || (await request.text()) || 'world';
-    console.log(data);
-    try {
-        const files = fs.readdirSync(path.join(process.cwd(), './src/PDFGenerator'));
-        console.log(files);
-    } catch (err) {
-        console.error('Error reading directory:', err);
-    }
+    handleInput(data)
     const pdf = getPDF();
     try {
-        // const pdf = fs.readFileSync(outputPath);
         return {
             body: pdf,
             status: 200,
@@ -66,7 +61,7 @@ export async function PDFGenerator(request: HttpRequest, context: InvocationCont
 }
 
 app.http('PDFGenerator', {
-    methods: ['GET', 'POST'],
+    methods: ['POST'],
     authLevel: 'anonymous',
     handler: PDFGenerator
 });
