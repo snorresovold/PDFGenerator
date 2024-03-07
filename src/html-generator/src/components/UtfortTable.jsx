@@ -17,10 +17,10 @@ function UtfortTable(tasks) {
           </tr>
         </thead>
         <tbody>
-          {tasks.map((task, index) => (
+          {tasks.tasks.map((task, index) => (
             <tr key={index}>
-              <td>{task.Beskrivelse}</td>
-              <td>{task.Kategori}</td>
+              {/* <td>{task.Beskrivelse}</td>
+              <td>{task.Kategori}</td> */}
               <td>
                 {task.Utført ? (
                   <svg
@@ -52,7 +52,7 @@ function UtfortTable(tasks) {
                   </svg>
                 )}
               </td>
-              <td>{task.Kommentar}</td>
+              <td>{task.kommentar}</td>
             </tr>
           ))}
         </tbody>
