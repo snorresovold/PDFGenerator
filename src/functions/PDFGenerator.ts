@@ -1,8 +1,10 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
 import { exec, spawn } from "child_process";
+import {CreateFile, ReadFiles} from "./Helpers/FileShareHelper";
 import * as fs from 'fs';
 
-function handleInput(input: string) {
+function handleInput(input: string){
+    fs.unlinkSync("./src/html-generator/src/data/data.json");
     fs.writeFile("./src/html-generator/src/data/data.json", input, (err) => {
         if (err) {
             console.error('Error writing JSON to file:', err);
@@ -45,7 +47,9 @@ function getPDF(){
 export async function PDFGenerator(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
     context.log(`Http function processed request for url "${request.url}"`);
     const data = request.query.get('data') || (await request.text()) || 'world';
-    handleInput(data)
+    context.log(context.invocationId);
+    const filename = CreateFile(data);
+    handleInput(data);
     const pdf = getPDF();
     try {
         return {
