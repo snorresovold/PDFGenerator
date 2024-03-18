@@ -1,18 +1,12 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
 import { exec, spawn } from "child_process";
-import {CreateFile, ReadFiles} from "./Helpers/FileShareHelper";
 import * as fs from 'fs';
+import { CreateBlob, deleteBlob, downloadBlobToFile } from "./Helpers/Blobhelper";
+import { BlobServiceClient } from "@azure/storage-blob";
 
-function handleInput(input: string){
-    fs.unlinkSync("./src/html-generator/src/data/data.json");
-    fs.writeFile("./src/html-generator/src/data/data.json", input, (err) => {
-        if (err) {
-            console.error('Error writing JSON to file:', err);
-        } else {
-            console.log('JSON data has been written to', "./src/html-generator/src/data");
-        }
-    });
-}
+const connStr = process.env.CONNECTIONSTRING;
+const blobServiceClient = BlobServiceClient.fromConnectionString(connStr);
+const containerClient = blobServiceClient.getContainerClient("newcontainer1710491836524");
 
 function getPDF(){
     const childProcess = spawn('npm', ['run', 'dev'], { cwd: 'src/html-generator' });
@@ -40,7 +34,7 @@ function getPDF(){
         console.log(`stdout: ${stdout}`);
         console.error(`stderr: ${stderr}`);
       });
-    const PDF = fs.readFileSync("./src/PDFGenerator/output.pdf")
+    const PDF = fs.readFileSync("./src/PDFGenerator/output.pdf");
     return PDF
 }
 
@@ -48,8 +42,9 @@ export async function PDFGenerator(request: HttpRequest, context: InvocationCont
     context.log(`Http function processed request for url "${request.url}"`);
     const data = request.query.get('data') || (await request.text()) || 'world';
     context.log(context.invocationId);
-    const filename = CreateFile(data);
-    handleInput(data);
+    const blobName = await CreateBlob(containerClient, data);
+    downloadBlobToFile(blobName, "./src/html-generator/src/data/data.json");
+    deleteBlob(containerClient, blobName);
     const pdf = getPDF();
     try {
         return {
