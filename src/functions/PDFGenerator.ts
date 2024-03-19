@@ -39,6 +39,7 @@ function getPDF(){
 }
 
 export async function PDFGenerator(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
+    context.log(`Http function processed request for url "${request.url}"`);
     const data = request.query.get('data') || (await request.text()) || 'world';
     context.log(context.invocationId);
     const blobName = await CreateBlob(containerClient, data);
