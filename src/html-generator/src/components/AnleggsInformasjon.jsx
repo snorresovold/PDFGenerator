@@ -8,7 +8,7 @@ function AnleggsInformasjon(props) {
       <p>Postnummer: {props.postnummer}</p>
       <p>Sted: {props.sted}</p>
       <br />
-      <p>Modelt: {props.modell}</p>
+      <p>Modell: {props.modell}</p>
       <p>Nyttelast: {props.nyttelast}</p>
       <p>Antall stopp: {props.antallStopp}</p>
       <p>Løftehøyde: {props.løftehøyde}</p>
