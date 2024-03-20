@@ -13,7 +13,7 @@ function getPDF(){
     childProcess.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
     });
-
+    
     childProcess.stderr.on('data', (data) => {
         console.error(`stderr: ${data}`);
     });
@@ -40,12 +40,14 @@ function getPDF(){
 
 export async function PDFGenerator(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
     context.log(`Http function processed request for url "${request.url}"`);
-    const data = request.query.get('data') || (await request.text()) || 'world';
+    const data = request.query.get('data') || (await request.text());
+    // context.log("data:", data)
     context.log(context.invocationId);
     const blobName = await CreateBlob(containerClient, data);
     downloadBlobToFile(blobName, "./src/html-generator/src/data/data.json");
     deleteBlob(containerClient, blobName);
     const pdf = getPDF();
+    context.log(pdf);
     try {
         return {
             body: pdf,
