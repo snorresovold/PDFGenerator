@@ -12,7 +12,6 @@ function delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
 }
 
-
 async function getPDF(){
     const childProcess = spawn('npm', ['run', 'dev'], { cwd: 'src/html-generator' });
     childProcess.stdout.on('data', (data) => {
@@ -30,7 +29,6 @@ async function getPDF(){
     childProcess.on('close', (code) => {
         console.log(`child process exited with code ${code}`);
     });
-    await delay(100)
     exec('cd ./src/PDFGenerator && node dist/main.js', (error, stdout, stderr) => {
         if (error) {
           console.error(`exec error: ${error}`);
@@ -38,7 +36,7 @@ async function getPDF(){
         }
         console.log(`stdout: ${stdout}`);
         console.error(`stderr: ${stderr}`);
-      });
+    });
     const PDF = fs.readFileSync("./src/PDFGenerator/output.pdf");
     return PDF
 }
