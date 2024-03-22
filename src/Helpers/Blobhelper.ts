@@ -1,4 +1,4 @@
-import { ContainerClient, BlobServiceClient, BlockBlobClient, BlobDeleteOptions, BlobDeleteResponse } from "@azure/storage-blob";
+import { ContainerClient, BlobServiceClient, BlockBlobClient, BlobDeleteOptions, BlobDeleteResponse, BlobClient } from "@azure/storage-blob";
 const connStr = process.env.CONNECTIONSTRING;
 const blobServiceClient = BlobServiceClient.fromConnectionString(connStr);
 
@@ -17,12 +17,18 @@ export async function ListContainers(){
     }
 }
 
-export async function CreateBlob(containerClient: ContainerClient, content: string) {
-    const blobName = "newblob" + new Date().getTime();
+export async function CreateBlob(containerClient: ContainerClient, content: string, blobName:string) {
     const blockBlobClient = containerClient.getBlockBlobClient(blobName);
     const uploadBlobResponse = await blockBlobClient.upload(content, content.length);
     console.log(`Upload block blob ${blobName} successfully`, uploadBlobResponse.requestId);
     return blobName
+}
+
+export async function CreateBlobFromBuffer(containerClient: ContainerClient, buffer: any) {
+  deleteBlob(containerClient, "output.pdf")
+  const blockBlobClient = containerClient.getBlockBlobClient("output.pdf");
+  await blockBlobClient.uploadData(buffer);
+  return "output.pdf"
 }
 
 export async function downloadBlobToFile(
@@ -36,6 +42,21 @@ export async function downloadBlobToFile(
     console.log(
       `download of ${blobName} success ${downloadResult.blobCommittedBlockCount}`
     );
+  }
+}
+
+export async function DownloadBlobAsStream(
+  containerClient: ContainerClient,
+  blobName: string,
+  writableStream: any
+) {
+  const blobClient: BlobClient = await containerClient.getBlobClient(blobName);
+
+  const downloadResponse = await blobClient.download();
+
+  if (!downloadResponse.errorCode && downloadResponse?.readableStreamBody) {
+    downloadResponse.readableStreamBody.pipe(writableStream);
+    console.log(`download of ${blobName} succeeded`);
   }
 }
 
