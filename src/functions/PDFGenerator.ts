@@ -8,7 +8,12 @@ const connStr = process.env.CONNECTIONSTRING;
 const blobServiceClient = BlobServiceClient.fromConnectionString(connStr);
 const containerClient = blobServiceClient.getContainerClient("newcontainer1710491836524");
 
-function getPDF(){
+function delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
+
+
+async function getPDF(){
     const childProcess = spawn('npm', ['run', 'dev'], { cwd: 'src/html-generator' });
     childProcess.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
@@ -25,7 +30,7 @@ function getPDF(){
     childProcess.on('close', (code) => {
         console.log(`child process exited with code ${code}`);
     });
-
+    await delay(100)
     exec('cd ./src/PDFGenerator && node dist/main.js', (error, stdout, stderr) => {
         if (error) {
           console.error(`exec error: ${error}`);
@@ -45,7 +50,7 @@ export async function PDFGenerator(request: HttpRequest, context: InvocationCont
     const blobName = await CreateBlob(containerClient, data, "input.json");
     downloadBlobToFile(blobName, "./src/html-generator/src/data/data.json");
     downloadBlobToFile("output.pdf", "./src/PDFGenerator/output.pdf");
-    const pdf = getPDF()
+    const pdf = await getPDF()
     try {
         return {
             body: pdf,
