@@ -11,7 +11,7 @@ async function generatePDFFromHTML(html: string) {
     const page = await browser.newPage();
     await page.goto(html, {waitUntil: "networkidle2"});
     const pdf = await page.pdf({ format: 'A4', });
-    CreateBlobFromBuffer(containerClient, pdf)
+    CreateBlobFromBuffer(containerClient, pdf);
     await browser.close();
 }
 

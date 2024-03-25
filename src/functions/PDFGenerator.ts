@@ -1,7 +1,7 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
 import { exec, spawn } from "child_process";
 import * as fs from 'fs';
-import { CreateBlob, downloadBlobToFile } from "../Helpers/Blobhelper";
+import { CreateBlob, deleteBlob, downloadBlobToFile } from "../Helpers/Blobhelper";
 import { BlobServiceClient } from "@azure/storage-blob";
 
 const connStr = process.env.CONNECTIONSTRING;
@@ -42,8 +42,10 @@ export async function PDFGenerator(request: HttpRequest, context: InvocationCont
     const data = request.query.get('data') || (await request.text());
     context.log(context.invocationId);
     const blobName = await CreateBlob(containerClient, data, "input.json");
-    downloadBlobToFile(blobName, "./src/html-generator/src/data/data.json");
-    downloadBlobToFile("output.pdf", "./src/PDFGenerator/output.pdf");
+    await downloadBlobToFile(blobName, "./src/html-generator/src/data/data.json");
+    await downloadBlobToFile("output.pdf", "./src/PDFGenerator/output.pdf");
+    deleteBlob(containerClient, "input.json");
+    deleteBlob(containerClient, "output.pdf");
     const pdf = await getPDF();
     try {
         return {
