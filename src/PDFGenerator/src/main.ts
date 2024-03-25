@@ -10,8 +10,8 @@ async function generatePDFFromHTML(html: string) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(html, {waitUntil: "networkidle2"});
-    const pdf = await page.pdf({ format: 'A4', });
-    CreateBlobFromBuffer(containerClient, pdf);
+    const pdf = await page.pdf({ path: "./src/PDFGenerator/", format: 'A4', });
+    // CreateBlobFromBuffer(containerClient, pdf);
     await browser.close();
 }
 

@@ -6,7 +6,7 @@ import { BlobServiceClient } from "@azure/storage-blob";
 
 const connStr = process.env.CONNECTIONSTRING;
 const blobServiceClient = BlobServiceClient.fromConnectionString(connStr);
-const containerClient = blobServiceClient.getContainerClient("newcontainer1710491836524");
+// const containerClient = blobServiceClient.getContainerClient("newcontainer1710491836524");
 
 async function getPDF(){
     const childProcess = spawn('npm', ['run', 'dev'], { cwd: 'src/html-generator' });
@@ -41,11 +41,12 @@ export async function PDFGenerator(request: HttpRequest, context: InvocationCont
     context.log(`Http function processed request for url "${request.url}"`);
     const data = request.query.get('data') || (await request.text());
     context.log(context.invocationId);
-    const blobName = await CreateBlob(containerClient, data, "input.json");
-    await downloadBlobToFile(blobName, "./src/html-generator/src/data/data.json");
-    await downloadBlobToFile("output.pdf", "./src/PDFGenerator/output.pdf");
-    deleteBlob(containerClient, "input.json");
-    deleteBlob(containerClient, "output.pdf");
+    // const blobName = await CreateBlob(containerClient, data, "input.json");
+    // await downloadBlobToFile(blobName, "./src/html-generator/src/data/data.json");
+    // await downloadBlobToFile("output.pdf", "./src/PDFGenerator/output.pdf");
+    // deleteBlob(containerClient, "input.json");
+    // deleteBlob(containerClient, "output.pdf");
+
     const pdf = await getPDF();
     try {
         return {
