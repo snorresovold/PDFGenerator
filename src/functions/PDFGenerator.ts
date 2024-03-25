@@ -3,6 +3,15 @@ import { exec, spawn } from "child_process";
 import * as fs from 'fs';
 import path = require("node:path");
 
+function handleInput(input: string) {
+    fs.writeFile("./src/html-generator/src/data/data.json", input, (err) => {
+        if (err) {
+            console.error('Error writing JSON to file:', err);
+        } else {
+            console.log('JSON data has been written to', "./src/html-generator/src/data");
+        }
+    });
+}
 
 function getPDF(){
     const childProcess = spawn('npm', ['run', 'preview'], { cwd: 'src/html-generator' });
@@ -38,6 +47,7 @@ export async function PDFGenerator(request: HttpRequest, context: InvocationCont
     context.log(`Http function processed request for url "${request.url}"`);
 
     const data = request.query.get('data') || (await request.text()) || 'world';
+    handleInput(data);
     console.log(data);
     try {
         const files = fs.readdirSync(path.join(process.cwd(), './src/PDFGenerator'));
@@ -45,9 +55,9 @@ export async function PDFGenerator(request: HttpRequest, context: InvocationCont
     } catch (err) {
         console.error('Error reading directory:', err);
     }
-    const pdf = getPDF();
+    getPDF();
     try {
-        // const pdf = fs.readFileSync(outputPath);
+        const pdf = fs.readFileSync("./src/PDFGenerator/output.pdf");
         return {
             body: pdf,
             status: 200,

@@ -8,4 +8,4 @@ async function generatePDFFromHTML(html: string, outputPath: string) {
     await browser.close();
 }
 
-generatePDFFromHTML("http://localhost:4173/", "/Users/snorresovold/Documents/GitHub/PDFGenerator/src/functions/output.pdf")
+generatePDFFromHTML("http://localhost:4173/", "./src/PDFGenerator/");
